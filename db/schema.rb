@@ -10,9 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_08_17_192414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "printer_id", null: false
+    t.datetime "meeting_time"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["printer_id"], name: "index_bookings_on_printer_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "printers", force: :cascade do |t|
+    t.float "price"
+    t.string "model"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_printers_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text "address"
+    t.integer "rating"
+    t.boolean "owner"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "bookings", "printers"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "printers", "users"
 end
