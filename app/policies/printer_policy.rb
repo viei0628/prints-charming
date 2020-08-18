@@ -9,4 +9,12 @@ class PrinterPolicy < ApplicationPolicy
     user.is_owner
   end
 
+  def new?
+    true
+  end
+
+  def show?
+    true
+  end
+
 end
