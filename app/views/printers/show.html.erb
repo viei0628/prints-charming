@@ -2,4 +2,12 @@
 <%= render "shared/navbar" %>
 <h2><%= @printer.model %></h2>
 <h2><%= @printer.price %></h2>
+<br>
+
+<h2> <%= link_to "See bookings for this printer", printer_bookings_path(@printer)%> </h2>
+
+<br>
+
+<h2><%= link_to "Book this printer", new_printer_booking_path(@printer)%></h2>
+
 
