@@ -1,0 +1,18 @@
+.card {
+  color: white;
+  position: relative;
+  height: 175px;
+  margin-top: 10px;
+  border: solid white 2px;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+.card-description {
+  bottom: 10px;
+  left: 10px;
+}
+
+.card-description h3 {
+  font-size: 20px;
+}
