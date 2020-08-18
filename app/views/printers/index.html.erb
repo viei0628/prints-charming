@@ -2,6 +2,8 @@
 
 <ul>
   <% @printers.each do |printer| %>
-  <li><%= printer.price %></li>
+  <li><%= link_to printer.model, printer_path(printer) %></li>
   <% end %>
 </ul>
+
+<%= link_to "Add Printer", new_printer_path %>
