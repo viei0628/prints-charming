@@ -1,10 +1,18 @@
 <%= render "shared/navbar" %>
 <h2>Nearby Printers</h2>
 
-<ul>
-  <% @printers.each do |printer| %>
-  <li><%= link_to printer.model, printer_path(printer) %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <% @printers.each do |printer| %>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card">
+          <div class="card-description text-center">
+            <h3><%= link_to printer.model, printer_path(printer) %></h3>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to "Add Printer", new_printer_path %>
+<%= link_to "Add Printer", new_printer_path, class: "btn btn-flat m-3" %>
