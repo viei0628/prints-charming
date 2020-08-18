@@ -1,0 +1,5 @@
+<h2>Edit booking for <%= @booking.printer.model %> </h2>
+<%= simple_form_for @booking do |f| %>
+  <%= f.input :status, as: :radio_buttons, collection: ["Accepted", "Rejected"]  %>
+  <%= f.button :submit, "Update" %>
+<% end %>

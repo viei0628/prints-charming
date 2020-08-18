@@ -1,12 +1,14 @@
 <%= render "shared/navbar" %>
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="form-content col-sm-12 col-md-6 my-5 p-5">
       <h2><strong>Model: </strong><%= @printer.model %></h2>
       <h2><strong>Price: $</strong><%= @printer.price %></h2>
-
+      
+      <%= link_to "See bookings for this printer", printer_bookings_path(@printer)%>
       <%= link_to "Back", printers_path, class: "btn btn-ghost mt-4" %>
+      <%= link_to "Book this printer", new_printer_booking_path(@printer)%>
+      
     </div>
   </div>
 </div>
