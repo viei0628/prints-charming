@@ -13,12 +13,13 @@ class PrintersController < ApplicationController
 
   def create
     @printer = Printer.new(printer_params)
-    # @printer.user_id = current_user
+    @printer.user = current_user
     if @printer.save
       redirect_to printer_path(@printer)
     else
       render :new
     end
+    #binding.pry
   end
 
   def destroy
