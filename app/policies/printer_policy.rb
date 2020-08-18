@@ -6,7 +6,11 @@ class PrinterPolicy < ApplicationPolicy
   end
 
   def create?
-    user.is_owner
+    true
+    #user.is_owner
   end
 
+  def new?
+    true 
+  end
 end

@@ -1,6 +1,6 @@
 class PrintersController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show]
+ before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @printers = Printer.all
@@ -18,12 +18,12 @@ class PrintersController < ApplicationController
   def create
     @printer = Printer.new(printer_params)
     @printer.user = current_user
+    authorize @printer
     if @printer.save
       redirect_to printer_path(@printer)
     else
       render :new
     end
-    #binding.pry
   end
 
   def destroy
@@ -42,7 +42,7 @@ class PrintersController < ApplicationController
     @printer = Printer.find(params[:id])
   end
 
-   def skip_pundit?
+  def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
