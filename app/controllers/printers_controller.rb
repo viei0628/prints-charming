@@ -1,4 +1,8 @@
 class PrintersController < ApplicationController
+
+  before_action :authenticate_user!
+  include Pundit
+
   def index
     @printers = Printer.all
   end
@@ -9,6 +13,7 @@ class PrintersController < ApplicationController
 
   def new
     @printer = Printer.new
+    authorize @printer
   end
 
   def create
@@ -37,4 +42,9 @@ class PrintersController < ApplicationController
   def set_printer
     @printer = Printer.find(params[:id])
   end
+
+   def skip_pundit?
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
 end
