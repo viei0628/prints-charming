@@ -1,5 +1,9 @@
 <%= render "shared/navbar" %>
-<div class="container">
-  <h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dgudbai8t/image/upload/v1597773767/test_bdpvp5.jpg);">
+  <div class="container">
+    <h1>Prints Charming brings <strong>print outs</strong> to <strong>disorganized people</strong>!</h1>
+    <p>Change your life! Get a print out now</p>
+    <%= link_to 'Find a Printer', new_printer_path, class:'btn btn-flat' %>
+  </div>
 </div>
+
