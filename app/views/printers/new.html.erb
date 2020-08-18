@@ -1,0 +1,6 @@
+<h2>Add A Printer</h2>
+<%= simple_form_for @printer do |f| %>
+  <%= f.input :model %>
+  <%= f.input :price %>
+  <%= f.button :submit, "Add Printer" %>
+<% end %>
