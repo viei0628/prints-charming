@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, presence: true
   validates :address, presence: true
+  validates :is_owner, inclusion: { in: [true, false] }
 end

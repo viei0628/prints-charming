@@ -8,9 +8,10 @@
         <%= f.input :name,
                     required: true,
                     input_html: { autocomplete: "name" } %>
-        <%= f.input :is_owner?, 
+        <%= f.input :is_owner,
             :as => :select, 
             :collection => [['I own a printer',true],['I am looking for a printer',false]], 
+            :default => true,
             :label => "User Type" %>
         <%= f.input :address,
                     required: true,
