@@ -51,6 +51,4 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:meeting_time, :status)
   end
-
-  
 end
