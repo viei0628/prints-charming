@@ -3,11 +3,12 @@ class PrintersController < ApplicationController
  before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @printers = Printer.all
+    @printers = policy_scope(Printer)
   end
 
   def show
     @printer = Printer.find(params[:id])
+    authorize @printer
   end
 
   def new
@@ -45,5 +46,4 @@ class PrintersController < ApplicationController
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
-
 end
