@@ -1,0 +1,5 @@
+<h2>Book <%= @printer.model %> </h2>
+<%= simple_form_for [@printer, @booking] do |f| %>
+  <%= f.input :meeting_time %>
+  <%= f.button :submit, "Book Printer" %>
+<% end %>
