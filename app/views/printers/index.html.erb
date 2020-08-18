@@ -1,0 +1,9 @@
+<h2>Nearby Printers</h2>
+
+<ul>
+  <% @printers.each do |printer| %>
+  <li><%= link_to printer.model, printer_path(printer) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Add Printer", new_printer_path %>
