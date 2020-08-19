@@ -1,4 +1,5 @@
 .banner {
+  height: 100vh;
   background-size: cover;
   background-position: center;
   padding: 150px 0;
@@ -17,4 +18,20 @@
   color: white;
   opacity: .9;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+.banner .wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+.banner .wrapper .one {
+  text-align: center;
+  align-items: center;
+  grid-column: 1 / 4;
+  grid-row: 2;
+}
+.banner .wrapper .two {
+  grid-column: 2 / 4;
+  grid-row: 3;
 }
