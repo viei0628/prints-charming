@@ -1,9 +1,12 @@
+<%= render 'shared/navbar' %>
 <h1> Bookings for <%=@printer.model%> </h1>
 
-<ul>
-  <% @bookings.each do |booking|  %>
-    <li><%= link_to "Booking with #{User.find(booking.user_id).name} at #{booking.meeting_time}", booking_path(booking) %></li>
-  <%end%>
-</ul>
+<div class="container">
+  <ul>
+    <% @bookings.each do |booking|  %>
+      <li><%= link_to "Booking with #{User.find(booking.user_id).name} at #{booking.meeting_time}", booking_path(booking) %></li>
+    <%end%>
+  </ul>
 
-<h2><%= link_to "Back to #{@printer.model}", printer_path(@printer) %></h2>
+  <h2><%= link_to "Back to #{@printer.model}", printer_path(@printer) %></h2>
+</div>

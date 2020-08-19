@@ -1,3 +1,13 @@
+<%= render 'shared/navbar' %>
 <% @bookings.each do |booking| %>
-  <h1>Booking for <%= booking.printer.model %></h1>
+  <h1>Booking for <%= booking.printer.model %> </h1>
+  <p>current status:  <%= booking.status %></p>
+  <% if current_user.is_owner %>
+    <%= simple_form_for(booking) do |f|%>
+      <%= f.input :status, collection: ["Accepted", "Rejected"], default: true, label: "Change Status" %>
+      <%= f.button :submit, "Update" %>
+    <% end %>
+
+  <% end %>
+
 <% end %>

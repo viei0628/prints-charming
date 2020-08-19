@@ -1,7 +1,14 @@
 <%= render 'shared/navbar' %>
-<ul>
-  <% @printers.each do |printer| %>
-    <li> <%= printer.model %></li>
-  <%end%>
 
-</ul>
+<div style="margin-top: 5rem;">
+  <div class="container">
+    <div class="cards">
+      <% @printers.each do |printer| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path printer.photo.key, height: 300, width: 400, crop: :fill %>')">
+          <p><%=link_to printer.model, printer_path(printer), class:"card-link" %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
