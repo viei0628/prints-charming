@@ -6,8 +6,8 @@
       </div>
       <h2><strong>Model: </strong><%= @printer.model %></h2>
       <h2><strong>Price: $</strong><%= @printer.price %></h2>
-      <%= link_to "See bookings for this printer", printer_bookings_path(@printer), class: "btn btn-gradient my-3" %>
-      <%= link_to "Book this printer", new_printer_booking_path(@printer), class: "btn btn-gradient" %>
+      <%= link_to "See bookings for this printer", printer_bookings_path(@printer), class: "btn btn-flat my-3" %>
+      <%= link_to "Book this printer", new_printer_booking_path(@printer), class: "btn btn-flat" %>
 
       <div>
         <%= link_to "Back", printers_path, class: "btn btn-ghost mt-4" %>
