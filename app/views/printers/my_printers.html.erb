@@ -1,0 +1,7 @@
+<%= render 'shared/navbar' %>
+<ul>
+  <% @printers.each do |printer| %>
+    <li> <%= printer.model %></li>
+  <%end%>
+
+</ul>

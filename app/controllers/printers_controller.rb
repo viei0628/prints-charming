@@ -33,6 +33,12 @@ class PrintersController < ApplicationController
     redirect_to printers_path
   end
 
+  def my_printers
+    @printers = current_user.printers
+    authorize @printers
+
+  end
+
   private
 
   def printer_params
