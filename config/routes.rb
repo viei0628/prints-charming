@@ -5,6 +5,5 @@ Rails.application.routes.draw do
   resources :printers, only: [:index, :show, :new, :create, :destroy] do 
     resources :bookings, only: [:index, :new, :create]
   end
-
   resources :bookings, only: [:show, :edit, :update, :destroy]
 end
