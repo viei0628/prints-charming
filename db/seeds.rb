@@ -1,7 +1,56 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
+
+file1 = URI.open('https://cdn.shopify.com/s/files/1/0036/4806/1509/products/m006972486_cd838355-1ed2-4667-8297-4451bd2c2b40_1000x.jpg?v=1584112381')
+file2 = URI.open('https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6290/6290017_sd.jpg')
+file3 = URI.open('https://i.pcmag.com/imagery/reviews/05obV8Fz3leayCNxJuOxrrh-11..v_1569473153.jpg')
+file4 = URI.open('https://img.vistek.net/prodimg/xlarge/401630.jpg')
+file5 = URI.open('https://cdn.shopify.com/s/files/1/0036/4806/1509/products/m007214202_d57beb81-f4bc-4782-8cb3-4c1bb3df946f.jpg?v=1581350380')
+file6 = URI.open('https://i.pcmag.com/imagery/reviews/02EWeb6Lde92387i2GfIc42-3..v_1569471016.jpg')
+
+puts "Destroying Printers"
+Printer.destroy_all if Rails.env.development?
+
+puts "Destroying Users"
+User.destroy_all if Rails.env.development?
+
+user1 = User.create(email: "user1@user.com", name: "Joe Green", password: "password", is_owner: true, address: "123 Street")
+user2 = User.create(email: "user2@user.com", name: "Lebron James", password: "password", is_owner: true, address: "456 Street")
+user3 = User.create(email: "user3@user.com", name: "Barack Obama", password: "password", is_owner: true, address: "789 Street")
+user4 = User.create(email: "user4@user.com", name: "Tom Brady", password: "password", is_owner: true, address: "123 Street")
+user5 = User.create(email: "user5@user.com", name: "Chuck Norris", password: "password", is_owner: true, address: "456 Street")
+user6 = User.create(email: "user6@user.com", name: "Honest Abe", password: "password", is_owner: true, address: "789 Street")
+
+
+
+printer1 = Printer.new(price: 6, model: "Brother HL-L2320D")
+printer1.user = user1
+printer1.photo.attach(io: file1, filename: '1.png', content_type: 'image/png')
+printer1.save
+
+printer2 = Printer.new(price: 4, model: "Canon XP 800")
+printer2.user = user2
+printer2.photo.attach(io: file2, filename: '2.png', content_type: 'image/png')
+printer2.save
+
+printer3 = Printer.new(price: 7, model: "Espon XP 15000")
+printer3.user = user3
+printer3.photo.attach(io: file3, filename: '3.png', content_type: 'image/png')
+printer3.save
+
+printer4 = Printer.new(price: 7, model: "Canon PRO 1000")
+printer4.user = user4
+printer4.photo.attach(io: file4, filename: '4.png', content_type: 'image/png')
+printer4.save
+
+printer5 = Printer.new(price: 7, model: "Lexmark C3224")
+printer5.user = user5
+printer5.photo.attach(io: file5, filename: '5.png', content_type: 'image/png')
+printer5.save
+
+printer6 = Printer.new(price: 7, model: "Canon Maxify iB4120")
+printer6.user = user6
+printer6.photo.attach(io: file6, filename: '6.png', content_type: 'image/png')
+printer6.save
+
+puts Printer.all
+
