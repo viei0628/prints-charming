@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :bookings, only: [:show, :edit, :update, :destroy]
 
   get "/bookings", to: "bookings#my_bookings", as: :my_bookings
+  get "/my_printers", to: "printers#my_printers", as: :my_printers
 end

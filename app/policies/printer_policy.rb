@@ -17,4 +17,9 @@ class PrinterPolicy < ApplicationPolicy
     true
   end
 
+  def my_printers?
+    return false if record.empty?
+    user == record[0].user
+  end
+
 end
