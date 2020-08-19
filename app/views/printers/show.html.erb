@@ -2,13 +2,16 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="form-content col-sm-12 col-md-6 my-5 p-5">
+      <div class="card-category mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @printer.photo.key, height: 300, width: 400, crop: :fill %>') ">
+      </div>
       <h2><strong>Model: </strong><%= @printer.model %></h2>
       <h2><strong>Price: $</strong><%= @printer.price %></h2>
-      
-      <%= link_to "See bookings for this printer", printer_bookings_path(@printer)%>
-      <%= link_to "Back", printers_path, class: "btn btn-ghost mt-4" %>
-      <%= link_to "Book this printer", new_printer_booking_path(@printer)%>
-      
+      <%= link_to "See bookings for this printer", printer_bookings_path(@printer), class: "btn btn-gradient my-3" %>
+      <%= link_to "Book this printer", new_printer_booking_path(@printer), class: "btn btn-gradient" %>
+
+      <div>
+        <%= link_to "Back", printers_path, class: "btn btn-ghost mt-4" %>
+      </div>
     </div>
   </div>
 </div>
