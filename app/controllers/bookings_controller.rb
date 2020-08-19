@@ -59,6 +59,23 @@ class BookingsController < ApplicationController
     redirect_to printer_bookings_path(@printer)
   end
 
+  def my_bookings
+    @user = User.find(params[:user_id])
+    @bookings = []
+    if @user.is_owner 
+      @user.printers.each do |printer| 
+        @bookings << printer.bookings
+        @bookings.flatten
+      end
+      @bookings.flatten
+    else 
+      @bookings = @user.bookings
+    end
+    authorize @bookings
+    @bookings
+    raise
+  end
+
   private 
   def booking_params
     params.require(:booking).permit(:meeting_time, :status)

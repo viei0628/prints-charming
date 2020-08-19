@@ -28,4 +28,8 @@ class BookingPolicy < ApplicationPolicy
   def update?
     true
   end
+
+  def my_bookings?
+    true
+  end
 end
