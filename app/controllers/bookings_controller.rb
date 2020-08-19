@@ -60,20 +60,22 @@ class BookingsController < ApplicationController
   end
 
   def my_bookings
-    @user = User.find(params[:user_id])
-    @bookings = []
-    if @user.is_owner 
-      @user.printers.each do |printer| 
-        @bookings << printer.bookings
-        @bookings.flatten
-      end
-      @bookings.flatten
+    # @bookings = []
+    if current_user.is_owner 
+      # current_user.printers.each do |printer| 
+      #   printer.bookings.each do |booking|
+      #     @bookings << booking
+      #   end
+      # end
+
+      # Booking.where(Printer.find(printer_id)current_user_id = current_user.id)
+
+      @bookings = Booking.joins(:printer).where(printers: {user: current_user})
+  
     else 
-      @bookings = @user.bookings
+      @bookings = current_user.bookings
     end
-    authorize @bookings
-    @bookings
-    raise
+    authorize Booking
   end
 
   private 
