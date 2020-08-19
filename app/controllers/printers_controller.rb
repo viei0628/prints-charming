@@ -36,7 +36,7 @@ class PrintersController < ApplicationController
   private
 
   def printer_params
-    params.require(:printer).permit(:model, :price)
+    params.require(:printer).permit(:model, :price, :photo)
   end
 
   def set_printer
