@@ -59,6 +59,25 @@ class BookingsController < ApplicationController
     redirect_to printer_bookings_path(@printer)
   end
 
+  def my_bookings
+    # @bookings = []
+    if current_user.is_owner 
+      # current_user.printers.each do |printer| 
+      #   printer.bookings.each do |booking|
+      #     @bookings << booking
+      #   end
+      # end
+
+      # Booking.where(Printer.find(printer_id)current_user_id = current_user.id)
+
+      @bookings = Booking.joins(:printer).where(printers: {user: current_user})
+  
+    else 
+      @bookings = current_user.bookings
+    end
+    authorize Booking
+  end
+
   private 
   def booking_params
     params.require(:booking).permit(:meeting_time, :status)

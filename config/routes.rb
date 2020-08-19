@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [:show, :edit, :update, :destroy]
+
+  get "/bookings", to: "bookings#my_bookings", as: :my_bookings
 end
