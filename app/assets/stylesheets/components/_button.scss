@@ -16,7 +16,7 @@
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
   padding: 8px 24px;
-  border-radius: 14px;
+  border-radius: 6px;
   background: #1EDD88;
   transition: background 0.3s ease;
 }
@@ -42,6 +42,5 @@
 }
 
 .rounded {
-  border-radius: 14px !important;
-  background: #ea5455;
+  border-radius: 6px !important;
 }
