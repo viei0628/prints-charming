@@ -43,6 +43,7 @@ document.addEventListener('turbolinks:load', () => {
     altInput: true,
     enableTime: true,
     dateFormat: "Y-m-d H:i",
+    defaultDate: new Date(),
   })
 });
 
