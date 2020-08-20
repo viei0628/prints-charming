@@ -25,6 +25,8 @@ require("channels")
 // External imports
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
+import { initMapbox } from '../plugins/init_mapbox';
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -34,5 +36,6 @@ document.addEventListener('turbolinks:load', () => {
   if(document.getElementById("banner-typed-text")){
   loadDynamicBannerText();
   }
+  initMapbox();
 });
 

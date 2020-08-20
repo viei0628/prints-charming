@@ -1,20 +1,33 @@
 <div class="printers_header m-3">
-<h3><strong>Printers</strong></h3>
-<p>Explore some nearby printers</p>
+  <h3><strong>Printers</strong></h3>
+  <p>Explore some nearby printers</p>
 </div>
 
-<div class="container">
-  <div class="cards">
-    <% @printers.each do |printer| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path printer.photo.key, height: 300, width: 400, crop: :fill %>')">
-        <p><%=link_to printer.model, printer_path(printer), class:"card-link" %></p>
+<div class = "container">
+  <div class="row align-items-start">
+    <div class="col">
+      <div id="map"
+           style="width: 100%; height: 600px; border-radius:5px;"
+           data-markers="<%= @markers.to_json %>"
+           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
-<div class="container">
-  <div style="display: flex; justify-content: center">
-    <%= link_to "Add Printer", new_printer_path, class: "btn btn-flat m-3" %>
-    <%= link_to "Home", root_path, class: "btn btn-flat m-3" %>
-  </div>
+    <div class="col">
+
+      <div class="container mt-3">
+
+        <div class="cards">
+          <% @printers.each do |printer| %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path printer.photo.key, height: 300, width: 400, crop: :fill %>')">
+              <p><%=link_to printer.model, printer_path(printer), class:"card-link" %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+        <div style="display: flex; justify-content: center">
+          <%= link_to "Add Printer", new_printer_path, class: "btn btn-flat m-3" %>
+          <%= link_to "Home", root_path, class: "btn btn-flat m-3" %>
+        </div>
+      </div>
 </div>
