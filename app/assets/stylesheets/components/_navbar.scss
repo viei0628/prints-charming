@@ -11,8 +11,12 @@
 
 .navbar-lewagon .navbar-brand {
   width: 40px;
-  color: rgb(62,149, 238);
+  color: black;
   font-size: 2rem;
+}
+
+.navbar-lewagon .navbar-brand:hover {
+  color: rgb(62,149, 238);
 }
 
 .logo
