@@ -1,4 +1,3 @@
-<%= render 'shared/navbar' %>
 <% @bookings.each do |booking| %>
   <div class="card-product">
     <img src="<%= cl_image_path booking.printer.photo.key, height: 300, width: 400, crop: :fill %>"/>
