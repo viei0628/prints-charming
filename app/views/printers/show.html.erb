@@ -10,6 +10,23 @@
         <%=link_to "Cancel", printers_path(@printer), class: "btn btn-danger rounded mt-3 w-100"%>
       <% elsif user_signed_in?%>
         <hr />
+
+        <div>
+          <h3>Reviews</h3>
+          <% if @printer.reviews.empty? %>
+            <p>Be the first to write a review</p>
+          <% else %>
+            <% @printer.reviews.each do |review| %>
+            <div>
+              <strong><%= review.name %></strong>
+            </div>
+            <div>
+              <%= review.text %>
+            </div>
+            <% end %>
+            </ul>
+          <% end %>
+        </div>
         <div class="container container pl-0">
           <div class="row justify-content-left pl-1">
             <div class="form-content col-sm-12 col-md-8 col-lg-12 my-2 p-2">
@@ -19,6 +36,7 @@
                 <%= f.button :submit, "Book Printer", class: "btn-flat mt-4 py-3 w-100" %>
               <% end %>
               <%=link_to "Cancel", printers_path(@printer), class: "btn btn-danger rounded mt-3 w-100 "%>
+              <%=link_to "Add Review", new_printer_review_path(@printer) %>
             </div>
           </div>
         </div>

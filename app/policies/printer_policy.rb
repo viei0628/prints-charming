@@ -6,7 +6,7 @@ class PrinterPolicy < ApplicationPolicy
   end
 
   def create?
-    user.is_owner
+    true
   end
 
   def new?
@@ -21,5 +21,4 @@ class PrinterPolicy < ApplicationPolicy
     return false if record.empty?
     user == record[0].user
   end
-
 end
