@@ -46,7 +46,10 @@ document.addEventListener('turbolinks:load', () => {
     dateFormat: "Y-m-d H:i",
     defaultDate: new Date(),
   })
+
+  if(document.getElementById("sort-lists1")){
   initSortable();
+  }
 });
 
 
