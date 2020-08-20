@@ -3,7 +3,7 @@
     <div class="form-content col-sm m-3 p-4">
       <h3 class="m-2 text-warning">Pending Bookings</h3>
       <hr />
-      <ul id='sort-lists' style="padding: 0;">
+      <ul id='sort-lists1' style="padding: 0;">
         <% @bookings.each do |booking| %>
           <% if booking.status == "Pending"%>
             <li style="list-style: none;">
@@ -31,7 +31,7 @@
     <div class="form-content col-sm m-3 p-4">
       <h3 class="m-2 text-success">Accepted Bookings</h3>
       <hr />
-      <ul id='sort-lists' style="padding: 0;">
+      <ul id="<%='sort-lists2' if current_user.is_owner%>" style="padding: 0;">
         <% @bookings.each do |booking| %>
           <% if booking.status == "Accepted"%>
             <li style="list-style: none;">
