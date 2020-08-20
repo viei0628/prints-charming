@@ -22,32 +22,32 @@ user6 = User.create(email: "user6@user.com", name: "Honest Abe", password: "pass
 
 
 
-printer1 = Printer.new(price: 6, model: "Brother HL-L2320D")
+printer1 = Printer.new(price: 6, model: "Brother HL-L2320D", address: "1253 McGill College, Montreal")
 printer1.user = user1
 printer1.photo.attach(io: file1, filename: '1.png', content_type: 'image/png')
 printer1.save
 
-printer2 = Printer.new(price: 4, model: "Canon XP 800")
+printer2 = Printer.new(price: 4, model: "Canon XP 800", address: "5333 Avenue Casgrain, Montreal")
 printer2.user = user2
 printer2.photo.attach(io: file2, filename: '2.png', content_type: 'image/png')
 printer2.save
 
-printer3 = Printer.new(price: 7, model: "Espon XP 15000")
+printer3 = Printer.new(price: 7, model: "Espon XP 15000", address: "1455 Boulevard de Maisonneuve, Montreal")
 printer3.user = user3
 printer3.photo.attach(io: file3, filename: '3.png', content_type: 'image/png')
 printer3.save
 
-printer4 = Printer.new(price: 7, model: "Canon PRO 1000")
+printer4 = Printer.new(price: 7, model: "Canon PRO 1000", address: "845 Sherbrooke St, Montreal")
 printer4.user = user4
 printer4.photo.attach(io: file4, filename: '4.png', content_type: 'image/png')
 printer4.save
 
-printer5 = Printer.new(price: 7, model: "Lexmark C3224")
+printer5 = Printer.new(price: 7, model: "Lexmark C3224", address: "1909 Avenue des Canadiens-de-Montreal, Montreal")
 printer5.user = user5
 printer5.photo.attach(io: file5, filename: '5.png', content_type: 'image/png')
 printer5.save
 
-printer6 = Printer.new(price: 7, model: "Canon Maxify iB4120")
+printer6 = Printer.new(price: 7, model: "Canon Maxify iB4120", address: "2000 McGill College Ave, Montreal")
 printer6.user = user6
 printer6.photo.attach(io: file6, filename: '6.png', content_type: 'image/png')
 printer6.save
