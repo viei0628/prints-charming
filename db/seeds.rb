@@ -13,8 +13,8 @@ Printer.destroy_all if Rails.env.development?
 puts "Destroying Users"
 User.destroy_all if Rails.env.development?
 
-user1 = User.create(email: "user1@user.com", name: "Joe Green", password: "password", is_owner: true, address: "123 Street")
-user2 = User.create(email: "user2@user.com", name: "Lebron James", password: "password", is_owner: true, address: "456 Street")
+user1 = User.create(email: "nachiket@owner.com", name: "Joe Green", password: "nachiket", is_owner: true, address: "123 Street")
+user2 = User.create(email: "nachiket@customer.com", name: "Lebron James", password: "nachiket", is_owner: true, address: "456 Street")
 user3 = User.create(email: "user3@user.com", name: "Barack Obama", password: "password", is_owner: true, address: "789 Street")
 user4 = User.create(email: "user4@user.com", name: "Tom Brady", password: "password", is_owner: true, address: "123 Street")
 user5 = User.create(email: "user5@user.com", name: "Chuck Norris", password: "password", is_owner: true, address: "456 Street")
