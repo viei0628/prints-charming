@@ -8,6 +8,9 @@
           <%= f.input :status, collection: ["Accepted", "Rejected"], default: true, label: "Change Status" %>
           <%= f.button :submit, "Update", class:"btn btn-flat m-3" %>
         <% end %>
+      <% else %>
+        <p>Meeting Time: <%= booking.meeting_time %></p>
+        <p>Address: <%= booking.printer.user.address %></p>
       <% end %>
     </div>
   </div>
