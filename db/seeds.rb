@@ -3,9 +3,9 @@ require "open-uri"
 file1 = URI.open('https://i.giphy.com/3hetVnNSl0IBa.gif')
 file2 = URI.open('https://media2.giphy.com/media/NyrOYfZlUSLCw/giphy.gif?cid=ecf05e471e36e52c49c7ba2740eb810f91aa9a18a44396c2&rid=giphy.gif')
 file3 = URI.open('https://i.giphy.com/media/OvGTyNYODgF8Y/source.gif')
-file4 = URI.open('https://i.giphy.com/media/oCCLHVNt8YO64/source.gif')
-file5 = URI.open('https://i.giphy.com/qeg20OQfqVqj6.gif')
-file6 = URI.open('https://i.giphy.com/media/VCYY1cWOwNxEk/source.gif')
+file4 = URI.open('https://img.vistek.net/prodimg/xlarge/401630.jpg')
+file5 = URI.open('https://cdn.shopify.com/s/files/1/0036/4806/1509/products/m007214202_d57beb81-f4bc-4782-8cb3-4c1bb3df946f.jpg?v=1581350380')
+file6 = URI.open('https://i.pcmag.com/imagery/reviews/02EWeb6Lde92387i2GfIc42-3..v_1569471016.jpg')
 
 puts "Destroying Printers"
 Printer.destroy_all if Rails.env.development?
@@ -13,8 +13,8 @@ Printer.destroy_all if Rails.env.development?
 puts "Destroying Users"
 User.destroy_all if Rails.env.development?
 
-user1 = User.create(email: "owner@owner.com", name: "Joe Green", password: "owner123", is_owner: true, address: "123 Street")
-user2 = User.create(email: "customer@customer.com", name: "Lebron James", password: "customer", is_owner: true, address: "456 Street")
+user1 = User.create(email: "nachiket@owner.com", name: "Joe Green", password: "nachiket", is_owner: true, address: "123 Street")
+user2 = User.create(email: "nachiket@customer.com", name: "Lebron James", password: "nachiket", is_owner: true, address: "456 Street")
 user3 = User.create(email: "user3@user.com", name: "Barack Obama", password: "password", is_owner: true, address: "789 Street")
 user4 = User.create(email: "user4@user.com", name: "Tom Brady", password: "password", is_owner: true, address: "123 Street")
 user5 = User.create(email: "user5@user.com", name: "Chuck Norris", password: "password", is_owner: true, address: "456 Street")
