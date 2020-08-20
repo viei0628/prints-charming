@@ -4,6 +4,14 @@ class PrintersController < ApplicationController
 
   def index
     @printers = policy_scope(Printer)
+    @printers = @printers.geocoded
+    @markers = @printers.map do |printer|
+      {
+        lat: printer.latitude,
+        lng: printer.longitude,
+        infoWindow: render_to_string(partial: "shared/info_window", locals: { printer: printer })
+      }
+    end
   end
 
   def show
