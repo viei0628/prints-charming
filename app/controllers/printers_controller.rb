@@ -8,7 +8,9 @@ class PrintersController < ApplicationController
 
   def show
     @printer = Printer.find(params[:id])
+    @booking = Booking.new
     authorize @printer
+    authorize @booking
   end
 
   def new
