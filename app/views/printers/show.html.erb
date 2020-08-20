@@ -8,7 +8,7 @@
       <% if current_user && @printer.user == current_user %>
         <%= link_to "See bookings for this printer", printer_bookings_path(@printer), class: "btn btn-flat mt-3 p-3 w-100" %>
         <%=link_to "Cancel", printers_path(@printer), class: "btn btn-dark rounded mt-3 w-100"%>
-      <% elsif user_signed_in?%>
+      <% elsif user_signed_in? && !current_user.is_owner?%>
         <hr />
         <div class="container container pl-0">
           <div class="row justify-content-left pl-1">
@@ -22,6 +22,8 @@
             </div>
           </div>
         </div>
+      <% elsif current_user.is_owner? %>
+        <h1>Stop looking at other people's printers you jealous bitch</h1>
       <%else %>
         <%= link_to "Sign in to book this printer", new_printer_booking_path(@printer), class: "btn btn-flat mt-3" %>
       <%end%>
