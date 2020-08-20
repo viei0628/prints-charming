@@ -1,2 +1,6 @@
 <h2><%= printer.model %></h2>
 <p><%= printer.address %></p>
+
+<img src='<%= cl_image_path printer.photo.key, height: 50, width: 60, crop: :fill %>'>
+<%= link_to 'Book this Printer', printer_path(printer), class:'btn-flat' %>
+
