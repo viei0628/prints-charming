@@ -5,28 +5,26 @@
       </div>
       <h2><strong>Model: </strong><%= @printer.model %></h2>
       <h2><strong>Price: </strong>$<%= @printer.price %></h2>
-      <% if user_signed_in?%>
+      <% if current_user && @printer.user == current_user %>
+        <%= link_to "See bookings for this printer", printer_bookings_path(@printer), class: "btn btn-flat mt-3 p-3 w-100" %>
+        <%=link_to "Cancel", printers_path(@printer), class: "btn btn-danger rounded mt-3 w-100"%>
+      <% elsif user_signed_in?%>
         <hr />
         <div class="container container pl-0">
           <div class="row justify-content-left pl-1">
             <div class="form-content col-sm-12 col-md-8 col-lg-12 my-2 p-2">
               <h2 class="mb-4">Book this printer </h2>
                 <%= simple_form_for [@printer, @booking] do |f| %>
-                <%= f.input :meeting_time %>
+                <%= f.text_field :meeting_time, data: { behavior: "flatpickr" }%>
                 <%= f.button :submit, "Book Printer", class: "btn-flat mt-4 py-3 w-100" %>
-                <% if current_user && current_user.is_owner %>
-                  <%=link_to "Cancel", printers_path(@printer), class: "btn btn-flat"%>
-                <% end %>
               <% end %>
+              <%=link_to "Cancel", printers_path(@printer), class: "btn btn-danger rounded mt-3 w-100 "%>
             </div>
           </div>
         </div>
       <%else %>
         <%= link_to "Sign in to book this printer", new_printer_booking_path(@printer), class: "btn btn-flat mt-3" %>
       <%end%>
-      <% if current_user && @printer.user == current_user %>
-        <%= link_to "See bookings for this printer", printer_bookings_path(@printer), class: "btn btn-flat mt-3" %>
-      <% end %>
     </div>
   </div>
 </div>

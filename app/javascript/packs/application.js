@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("flatpickr/dist/flatpickr.css")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -26,6 +27,7 @@ require("channels")
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 import { initMapbox } from '../plugins/init_mapbox';
+import flatpickr from "flatpickr"
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -37,5 +39,11 @@ document.addEventListener('turbolinks:load', () => {
   loadDynamicBannerText();
   }
   initMapbox();
+  flatpickr("[data-behavior = 'flatpickr' ]", {
+    altInput: true,
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+  })
 });
+
 
