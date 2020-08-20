@@ -7,8 +7,8 @@
       <h2><strong>Price: </strong>$<%= @printer.price %></h2>
       <% if current_user && @printer.user == current_user %>
         <%= link_to "See bookings for this printer", printer_bookings_path(@printer), class: "btn btn-flat mt-3 p-3 w-100" %>
-        <%=link_to "Cancel", printers_path(@printer), class: "btn btn-danger rounded mt-3 w-100"%>
-      <% elsif user_signed_in?%>
+        <%=link_to "Cancel", printers_path(@printer), class: "btn btn-dark rounded mt-3 w-100"%>
+      <% elsif user_signed_in? && !current_user.is_owner?%>
         <hr />
 
         <div>
@@ -32,7 +32,7 @@
             <div class="form-content col-sm-12 col-md-8 col-lg-12 my-2 p-2">
               <h2 class="mb-4">Book this printer </h2>
                 <%= simple_form_for [@printer, @booking] do |f| %>
-                <%= f.text_field :meeting_time, data: { behavior: "flatpickr" }%>
+                <%= f.text_field :meeting_time, placeholder: 'Choose a date that works for you', data: { behavior: "flatpickr" }, class: "mb-4"%>
                 <%= f.button :submit, "Book Printer", class: "btn-flat mt-4 py-3 w-100" %>
               <% end %>
               <%=link_to "Cancel", printers_path(@printer), class: "btn btn-danger rounded mt-3 w-100 "%>
@@ -40,6 +40,8 @@
             </div>
           </div>
         </div>
+      <% elsif current_user.is_owner? %>
+        <h1>Stop looking at other people's printers you jealous bitch</h1>
       <%else %>
         <%= link_to "Sign in to book this printer", new_printer_booking_path(@printer), class: "btn btn-flat mt-3" %>
       <%end%>

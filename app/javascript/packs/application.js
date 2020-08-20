@@ -7,7 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("flatpickr/dist/flatpickr.css")
+require("flatpickr/dist/themes/material_green.css")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -28,6 +28,7 @@ import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 import { initMapbox } from '../plugins/init_mapbox';
 import flatpickr from "flatpickr"
+import { initSortable } from '../plugins/init_sortable';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -43,7 +44,9 @@ document.addEventListener('turbolinks:load', () => {
     altInput: true,
     enableTime: true,
     dateFormat: "Y-m-d H:i",
+    defaultDate: new Date(),
   })
+  initSortable();
 });
 
 
