@@ -40,7 +40,7 @@
             </div>
           </div>
         </div>
-      <% elsif current_user.is_owner? %>
+      <% elsif current_user && current_user.is_owner? %>
         <h1>Stop looking at other people's printers you jealous bitch</h1>
       <%else %>
         <%= link_to "Sign in to book this printer", new_printer_booking_path(@printer), class: "btn btn-flat mt-3" %>
