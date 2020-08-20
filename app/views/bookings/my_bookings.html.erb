@@ -27,9 +27,8 @@
         <%end%>
       </ul>
     </div>
-    </div>
     <div class="form-content col-sm m-3 p-2">
-      <h3 class="m-2 text-warning">Pending Bookings</h3>
+      <h3 class="m-2 text-success">Accepted Bookings</h3>
       <ul id='sort-lists' style="padding: 0;">
         <% @bookings.each do |booking| %>
           <% if booking.status == "Accepted"%>
