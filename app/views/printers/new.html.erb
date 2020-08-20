@@ -5,6 +5,7 @@
       <%= simple_form_for @printer do |f| %>
         <%= f.input :model %>
         <%= f.input :price %>
+        <%= f.input :address, label: 'Printer Address' %>
         <%= f.input :photo, as: :file %>
         <%= f.button :submit, "Add Printer", class: "btn-flat" %>
       <% end %>

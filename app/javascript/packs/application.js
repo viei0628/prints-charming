@@ -28,6 +28,7 @@ import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 import { initMapbox } from '../plugins/init_mapbox';
 import flatpickr from "flatpickr"
+import { initSortable } from '../plugins/init_sortable';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -45,6 +46,7 @@ document.addEventListener('turbolinks:load', () => {
     dateFormat: "Y-m-d H:i",
     defaultDate: new Date(),
   })
+  initSortable();
 });
 
 
