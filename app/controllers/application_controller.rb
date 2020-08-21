@@ -27,11 +27,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if resource.is_owner
-      my_bookings_path(resource)
-    else
-      printers_path
-    end
-
+    resource.is_owner ? my_bookings_path(resource) : printers_path
   end
 end

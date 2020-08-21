@@ -2,8 +2,14 @@
   <div class="container">
     <div class="cards">
       <% @printers.each do |printer| %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path printer.photo.key, height: 300, width: 400, crop: :fill %>')">
-          <p><%=link_to printer.model, printer_path(printer), class:"card-link" %></p>
+        <div class="card-trip">
+          <img src="<%= cl_image_path printer.photo.key, height: 300, width: 400, crop: :fill %>"/>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= printer.model %></h2>
+              <p><%= link_to "See bookings for this printer", printer_bookings_path(printer), class: "btn btn-flat mt-3" %></p>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
