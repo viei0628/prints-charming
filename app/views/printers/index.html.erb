@@ -11,28 +11,47 @@
       </div>
     </div>
   </div>
-    <div class="col p-0">
+<div class="col p-0">
+  <div class="container mt-3 p-0">
+    <div class="cards">
+      <% @printers.each do |printer| %>
+        <div class="card-trip">
+          <img src="<%= cl_image_path printer.photo.key, height: 300, width: 400, crop: :fill %>"/>
+          <div class="card-trip-infos">
+            <div class="col-md-12 text-center">
+              <h2><%= printer.model %></h2>
+              <% if current_user && current_user == printer.user %>
+                <p><%= link_to "See bookings for this printer", printer_bookings_path(printer), class: "btn btn-flat mt-3" %></p>
+              <%else %>
+                <button type="button" class="btn btn-flat mt-3" data-toggle="modal" data-target="#printer-<%=printer.id%>">
+                 <%= current_user && current_user.is_owner ? "Read reviews for this printer" : "Read more about this printer"%>  
+                </button>
 
-      <div class="container mt-3 p-0">
 
-        <div class="cards">
-          <% @printers.each do |printer| %>
-            <div class="card-trip">
-              <img src="<%= cl_image_path printer.photo.key, height: 300, width: 400, crop: :fill %>"/>
-              <div class="card-trip-infos">
-                <div class="col-md-12 text-center">
-                  <h2><%= printer.model %></h2>
-                  <% if current_user && current_user == printer.user %>
-                    <p><%= link_to "See bookings for this printer", printer_bookings_path(printer), class: "btn btn-flat mt-3" %></p>
-                  <% elsif current_user && current_user.is_owner %>
-                    <p><%= link_to "Read reviews for this printer", printer_path(printer), class: "btn btn-flat mt-3" %></p>
-                  <% else %>
-                    <p><%= link_to "Read more about this printer", printer_path(printer), class: "btn btn-flat mt-3" %></p>
-                  <% end %>
+                <div class="modal fade" id="printer-<%=printer.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detailed Printer Info</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <%= render partial: "show_card", locals: {printer: printer, booking: @booking}%>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+
+              <%end%>
             </div>
-          <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
+
+
+
+    </div>
+  </div>
 </div>
