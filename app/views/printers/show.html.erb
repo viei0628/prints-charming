@@ -6,26 +6,45 @@
       <h2><strong>Model: </strong><%= @printer.model %></h2>
       <h2><strong>Price: </strong>$<%= @printer.price %></h2>
       <% if current_user && @printer.user == current_user %>
-        <%= link_to "See bookings for this printer", printer_bookings_path(@printer), class: "btn btn-flat mt-3 p-3 w-100" %>
+      <h5 style="text-align:right;"><%= pluralize @printer.bookings.where("status = 'Pending'").size, "Pending Bookings" %></h5>
+        <%= link_to "See all bookings for this printer", printer_bookings_path(@printer), class: "btn btn-flat mt-3 p-3 w-100" %>
         <%=link_to "Cancel", printers_path(@printer), class: "btn btn-dark rounded mt-3 w-100"%>
+        <div class="container-fluid mt-5 p-3" style="box-shadow: 0px 0px 5px rgba(0,0,0,0.2); border-radius: 10px;">
+          <div>
+            <h3 style="text-align: center; font-weight: bold;">Reviews</h3>
+            <hr /> 
+            <% if @printer.reviews.empty? %>
+              <p>No reviews yet</p>
+            <% else %>
+              <% @printer.reviews.each do |review| %>
+              <div>
+                <p><strong><%= review.name %></strong>: <%= review.text %></p>
+              </div>
+              <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
       <% elsif user_signed_in? && !current_user.is_owner?%>
+        <h5>Owned by: <%= @printer.user.name %></h5>
+        <h5>Address: <%=  @printer.address %></h5>
         <hr />
 
-        <div>
-          <h3>Reviews</h3>
-          <% if @printer.reviews.empty? %>
-            <p>Be the first to write a review</p>
-          <% else %>
-            <% @printer.reviews.each do |review| %>
-            <div>
-              <strong><%= review.name %></strong>
-            </div>
-            <div>
-              <%= review.text %>
-            </div>
+        <div class="container-fluid mt-5 p-3" style="box-shadow: 0px 0px 5px rgba(0,0,0,0.2); border-radius: 10px;">
+          <div>
+            <h3 style="text-align: center; font-weight: bold;">Reviews</h3>
+            <hr /> 
+            <% if @printer.reviews.empty? %>
+              <p>No reviews yet</p>
+            <% else %>
+              <% @printer.reviews.each do |review| %>
+              <div>
+                <p><strong><%= review.name %></strong>: <%= review.text %></p>
+              </div>
+              <% end %>
+              </ul>
             <% end %>
-            </ul>
-          <% end %>
+          </div>
         </div>
         <div class="container container pl-0">
           <div class="row justify-content-left pl-1">
@@ -35,15 +54,51 @@
                 <%= f.text_field :meeting_time, placeholder: 'Choose a date that works for you', data: { behavior: "flatpickr" }, class: "mb-4"%>
                 <%= f.button :submit, "Book Printer", class: "btn-flat mt-4 py-3 w-100" %>
               <% end %>
-              <%=link_to "Cancel", printers_path(@printer), class: "btn btn-danger rounded mt-3 w-100 "%>
-              <%=link_to "Add Review", new_printer_review_path(@printer) %>
+              <%=link_to "Cancel", printers_path(@printer), class: "btn btn-dark rounded mt-3 w-100 "%>
             </div>
           </div>
         </div>
       <% elsif current_user && current_user.is_owner? %>
-        <h1>Stop looking at other people's printers you jealous bitch</h1>
+        <h5>Owned by: <%= @printer.user.name %></h5>
+        <h5>Address: <%=  @printer.address %></h5>
+        <hr />
+        <div class="container-fluid mt-5 p-3" style="box-shadow: 0px 0px 5px rgba(0,0,0,0.2); border-radius: 10px;">
+          <div>
+            <h3 style="text-align: center; font-weight: bold;">Reviews</h3>
+            <hr /> 
+            <% if @printer.reviews.empty? %>
+              <p>No reviews yet</p>
+            <% else %>
+              <% @printer.reviews.each do |review| %>
+              <div>
+                <p><strong><%= review.name %></strong>: <%= review.text %></p>
+              </div>
+              <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
       <%else %>
-        <%= link_to "Sign in to book this printer", new_printer_booking_path(@printer), class: "btn btn-flat mt-3" %>
+        <h5>Owned by: <%= @printer.user.name %></h5>
+        <h5>Address: <%=  @printer.address %></h5>
+        <hr />
+        <div class="container-fluid mt-5 p-3" style="box-shadow: 0px 0px 5px rgba(0,0,0,0.2); border-radius: 10px;">
+          <div>
+            <h3 style="text-align: center; font-weight: bold;">Reviews</h3>
+            <hr /> 
+            <% if @printer.reviews.empty? %>
+              <p>No reviews yet</p>
+            <% else %>
+              <% @printer.reviews.each do |review| %>
+              <div>
+                <p><strong><%= review.name %></strong>: <%= review.text %></p>
+              </div>
+              <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+        <%= link_to "Sign in to book this printer", new_printer_booking_path(@printer), class: "btn btn-flat mt-3 w-100" %>
       <%end%>
     </div>
   </div>
