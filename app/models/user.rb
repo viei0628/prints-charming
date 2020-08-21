@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :printers
   has_many :reviews
+  has_many :notifications
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :name, presence: true

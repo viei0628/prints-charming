@@ -45,6 +45,11 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     @booking.status = params[:booking][:status]
+    @notification = Notification.new
+    @notification.booking = @booking 
+    @notification.user = @booking.user 
+    @notification.text = "Your booking for #{@booking.printer.model} is #{@booking.status}"
+    @notification.save
     authorize @booking
     if @booking.save
       redirect_to my_bookings_path(@booking)

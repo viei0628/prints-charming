@@ -2,13 +2,25 @@
   <%=link_to root_path, class:"navbar-brand" do %>
     <i class="fas fa-print"></i>
     <span class="logo">Prints Charming </span>
+    <% if user_signed_in? %>
+      <div class="dropdown mt-1" style="font-size: 35px;">
+        <%= link_to "#", id:"noti-drop" do %> 
+          <i class="far fa-bell"></i>
+        <%end%>
+        <div id="notiDropDown" class="dropdown-menu">
+          <% current_user.notifications.reverse.each do |notification| %>
+            <%=link_to notification.text, "#", class:"dropdown-item my-2"%>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
 
   <%end%>
   <div class="nav-collapse">
     <% if user_signed_in? %>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <div class="dropleft">
+          <div class="dropdown">
             <%= link_to current_user.name, "#", class:"btn btn-secondary dropdown-toggle m-2", id:"drop-button"%>
             <div id="myDropdown" class="dropdown-menu">
               <% if current_user.is_owner %>
