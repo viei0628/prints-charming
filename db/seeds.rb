@@ -6,6 +6,13 @@ file3 = URI.open('https://i.giphy.com/media/OvGTyNYODgF8Y/source.gif')
 file4 = URI.open('https://img.vistek.net/prodimg/xlarge/401630.jpg')
 file5 = URI.open('https://cdn.shopify.com/s/files/1/0036/4806/1509/products/m007214202_d57beb81-f4bc-4782-8cb3-4c1bb3df946f.jpg?v=1581350380')
 file6 = URI.open('https://i.pcmag.com/imagery/reviews/02EWeb6Lde92387i2GfIc42-3..v_1569471016.jpg')
+file7 = URI.open('https://thumbs.gfycat.com/PastelDeadChicken-size_restricted.gif')
+file8 = URI.open('https://i.pinimg.com/originals/ed/aa/7f/edaa7f2789e222e3a630b206082ccc7e.gif')
+file9 = URI.open('https://thumbs.gfycat.com/NeatEmptyChick-max-1mb.gif')
+file10 = URI.open('https://i.imgur.com/NyiWdAL.gif')
+file11 = URI.open('https://fortheremix.files.wordpress.com/2013/04/print.gif?w=404&h=539')
+file12 = URI.open('https://64.media.tumblr.com/0456eaa00ff239ee8389e8e5d1c14492/tumblr_ozf8d8W4xf1toamj8o1_500.gifv')
+
 
 puts "Destroying Printers"
 Printer.destroy_all if Rails.env.development?
@@ -19,6 +26,12 @@ user3 = User.create(email: "user3@user.com", name: "Barack Obama", password: "pa
 user4 = User.create(email: "user4@user.com", name: "Tom Brady", password: "password", is_owner: true, address: "123 Street")
 user5 = User.create(email: "user5@user.com", name: "Chuck Norris", password: "password", is_owner: true, address: "456 Street")
 user6 = User.create(email: "user6@user.com", name: "Honest Abe", password: "password", is_owner: true, address: "789 Street")
+user7 = User.create(email: "user7@user.com", name: "Hillary Clinton", password: "nachiket", is_owner: true, address: "123 Street")
+user8 = User.create(email: "user8@user.com", name: "Benjamin Franklin", password: "nachiket", is_owner: true, address: "456 Street")
+user9 = User.create(email: "user9@user.com", name: "Steve Harvey", password: "password", is_owner: true, address: "789 Street")
+user10 = User.create(email: "user10@user.com", name: "Mike Smith", password: "password", is_owner: true, address: "123 Street")
+user11 = User.create(email: "user11@user.com", name: "Gandalf", password: "password", is_owner: true, address: "456 Street")
+user12 = User.create(email: "user12@user.com", name: "Harry Potter", password: "password", is_owner: true, address: "789 Street")
 
 
 
@@ -51,6 +64,36 @@ printer6 = Printer.new(price: 7, model: "Canon Maxify iB4120", address: "2000 Mc
 printer6.user = user6
 printer6.photo.attach(io: file6, filename: '6.png', content_type: 'image/png')
 printer6.save
+
+printer7 = Printer.new(price: 7, model: "Canon Maxify iB4120", address: "2000 McGill College Ave, Montreal")
+printer7.user = user7
+printer7.photo.attach(io: file7, filename: '7.png', content_type: 'image/png')
+printer7.save
+
+printer8 = Printer.new(price: 7, model: "Canon Maxify iB4120", address: "2000 McGill College Ave, Montreal")
+printer8.user = user8
+printer8.photo.attach(io: file8, filename: '8.png', content_type: 'image/png')
+printer8.save
+
+printer9 = Printer.new(price: 12, model: "Canon Maxify iB4120", address: "2000 McGill College Ave, Montreal")
+printer9.user = user9
+printer9.photo.attach(io: file9, filename: '9.png', content_type: 'image/png')
+printer9.save
+
+printer10 = Printer.new(price: 7, model: "Canon Maxify iB4120", address: "2000 McGill College Ave, Montreal")
+printer10.user = user10
+printer10.photo.attach(io: file10, filename: '10.png', content_type: 'image/png')
+printer10.save
+
+printer11 = Printer.new(price: 7, model: "Canon Maxify iB4120", address: "2000 McGill College Ave, Montreal")
+printer11.user = user11
+printer11.photo.attach(io: file11, filename: '11.png', content_type: 'image/png')
+printer11.save
+
+printer12 = Printer.new(price: 7, model: "Canon Maxify iB4120", address: "2000 McGill College Ave, Montreal")
+printer12.user = user12
+printer12.photo.attach(io: file12, filename: '12.png', content_type: 'image/png')
+printer12.save
 
 puts Printer.all
 
