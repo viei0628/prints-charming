@@ -29,6 +29,7 @@ import { loadDynamicBannerText } from '../components/banner';
 import { initMapbox } from '../plugins/init_mapbox';
 import flatpickr from "flatpickr"
 import { initSortable } from '../plugins/init_sortable';
+import { showDropdownContent, hideDropdownOutClick } from '../components/navbar';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -37,7 +38,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   if(document.getElementById("banner-typed-text")){
-  loadDynamicBannerText();
+    loadDynamicBannerText();
   }
   initMapbox();
   flatpickr("[data-behavior = 'flatpickr' ]", {
@@ -48,8 +49,10 @@ document.addEventListener('turbolinks:load', () => {
   })
 
   if(document.getElementById("sort-lists1")){
-  initSortable();
+    initSortable();
   }
+  showDropdownContent();
+  // hideDropdownOutClick();
 });
 
 
