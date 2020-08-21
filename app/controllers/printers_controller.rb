@@ -12,6 +12,7 @@ class PrintersController < ApplicationController
         infoWindow: render_to_string(partial: "shared/info_window", locals: { printer: printer })
       }
     end
+    @booking = Booking.new
   end
 
   def show
