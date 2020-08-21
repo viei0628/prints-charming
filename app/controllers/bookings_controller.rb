@@ -10,6 +10,8 @@ class BookingsController < ApplicationController
   def new
     @printer = Printer.find(params[:printer_id])
     @booking = Booking.new
+    request.remote_ip
+    raise
     authorize @printer
     authorize @booking
   end
