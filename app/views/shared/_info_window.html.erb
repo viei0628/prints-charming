@@ -3,5 +3,8 @@
 <p><%= printer.address %></p>
 
 <img src='<%= cl_image_path printer.photo.key, height: 50, width: 60, crop: :fill %>'>
-<%= link_to 'Book this Printer', printer_path(printer), class:'btn-flat' %>
 
+
+<% if current_user && !current_user.is_owner %>
+  <%= link_to 'Book this Printer', printer_path(printer), class:'btn-flat' %>
+<% end %>
