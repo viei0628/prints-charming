@@ -67,6 +67,7 @@ class BookingsController < ApplicationController
     else
       @bookings = current_user.bookings
     end
+    @review = Review.new
     authorize Booking
   end
 
