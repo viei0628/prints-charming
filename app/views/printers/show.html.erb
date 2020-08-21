@@ -18,10 +18,7 @@
           <% else %>
             <% @printer.reviews.each do |review| %>
             <div>
-              <strong><%= review.name %></strong>
-            </div>
-            <div>
-              <%= review.text %>
+              <p><strong><%= review.name %></strong>: <%= review.text %></p>
             </div>
             <% end %>
             </ul>
