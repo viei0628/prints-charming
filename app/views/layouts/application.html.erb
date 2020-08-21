@@ -15,7 +15,7 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="alert alert-primary" style="<%= 'display:none' if notice.nil? %>" ><%= notice %></p>
+    <p class="alert alert-danger" style="<%= 'display:none' if alert.nil? %>"><%= alert %></p>
   </body>
 </html>
