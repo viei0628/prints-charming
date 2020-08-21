@@ -22,10 +22,12 @@
               <div class="card-trip-infos">
                 <div class="col-md-12 text-center">
                   <h2><%= printer.model %></h2>
-                  <% if current_user && current_user.is_owner %>
+                  <% if current_user && current_user == printer.user %>
                     <p><%= link_to "See bookings for this printer", printer_bookings_path(printer), class: "btn btn-flat mt-3" %></p>
+                  <% elsif current_user && current_user.is_owner %>
+                    <p><%= link_to "Read reviews for this printer", printer_path(printer), class: "btn btn-flat mt-3" %></p>
                   <% else %>
-                    <p><%= link_to "Book this printer", printer_path(printer), class: "btn btn-flat mt-3" %></p>
+                    <p><%= link_to "Read more about this printer", printer_path(printer), class: "btn btn-flat mt-3" %></p>
                   <% end %>
                 </div>
               </div>

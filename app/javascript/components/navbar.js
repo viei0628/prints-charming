@@ -4,7 +4,7 @@ const showDropdownContent = () => {
   if (dropdownButton) {
     dropdownButton.addEventListener('click', (event) => {
       event.preventDefault();
-      dropdownList.classList.toggle("show");
+        dropdownList.classList.toggle("show");
     });
    }
   
