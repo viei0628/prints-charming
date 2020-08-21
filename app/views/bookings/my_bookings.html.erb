@@ -72,7 +72,7 @@
                     <p>Meeting Time: <%= booking.meeting_time %></p>
                     <p>Address: <%= booking.printer.user.address %></p>
                     <p>Status: <%= booking.status %></p>
-                    <%=link_to "Add Review", new_printer_review_path(booking.printer) %>
+                    <%=link_to "Add Review", new_printer_review_path(booking.printer), class: "btn-flat"%>
                   </div>
                 </div>
               </li>

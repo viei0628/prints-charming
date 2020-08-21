@@ -2,7 +2,7 @@
   <%=link_to root_path, class:"navbar-brand" do %>
     <i class="fas fa-print"></i>
     <span class="logo">Prints Charming </span>
-    
+
   <%end%>
   <div class="nav-collapse">
     <% if user_signed_in? %>
@@ -12,6 +12,7 @@
             <%= link_to current_user.name, "#", class:"btn btn-secondary dropdown-toggle m-2", id:"drop-button"%>
             <div id="myDropdown" class="dropdown-menu">
               <% if current_user.is_owner %>
+                <%= link_to 'Add Your Printer', new_printer_path, class:"dropdown-item my-2"%>
                 <%= link_to "My Printers", my_printers_path, class:"dropdown-item my-2" %>
               <% end %>
               <%= link_to "My Bookings", my_bookings_path, class:"dropdown-item my-2" %>
