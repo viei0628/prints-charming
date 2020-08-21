@@ -1,8 +1,8 @@
-<div class="form-content m-3 p-3" style="background:border-box;">
+<div class="form-content m-3 p-3">
   <h2 class="ml-3 mt-2" style="font-weight: bold;"> All your bookings </h2>
   <div class="container-fluid">
     <div class="row">
-      <div style = "box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);" class="form-content col-sm m-3 p-4">
+      <div style = "box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);" class="form-content col-sm m-3 p-2">
         <h3 style="font-weight: bold;" class="m-2 text-warning">Pending Bookings</h3>
         <hr />
         <ul id='sort-lists1' style="padding: 0;">
@@ -16,7 +16,7 @@
                     <% if current_user.is_owner %>
                       <%= simple_form_for(booking) do |f|%>
                         <%= f.input :status, collection: ["Accepted", "Rejected"], default: true, label: "Change Status" %>
-                        <%= f.button :submit, "Update", class:"btn btn-flat m-3" %>
+                        <%= f.button :submit, "Update", class:"btn btn-flat" %>
                       <% end %>
                     <% else %>
                       <p>Meeting Time: <%= booking.meeting_time %></p>
@@ -30,7 +30,7 @@
           <%end%>
         </ul>
       </div>
-      <div style = "box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);" class="form-content col-sm m-3 p-4">
+      <div style = "box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);" class="form-content col-sm m-3 p-2">
         <h3 style="font-weight: bold;" class="m-2 text-success">Accepted Bookings</h3>
         <hr />
         <ul id='sort-lists2' style="padding: 0;">
@@ -44,7 +44,7 @@
                     <% if current_user.is_owner %>
                       <%= simple_form_for(booking) do |f|%>
                         <%= f.input :status, collection: ["Completed", "Rejected"], default: true, label: "Change Status" %>
-                        <%= f.button :submit, "Update", class:"btn btn-flat m-3" %>
+                        <%= f.button :submit, "Update", class:"btn btn-flat" %>
                       <% end %>
                     <% else %>
                       <p>Meeting Time: <%= booking.meeting_time %></p>
@@ -72,7 +72,29 @@
                     <p>Meeting Time: <%= booking.meeting_time %></p>
                     <p>Address: <%= booking.printer.user.address %></p>
                     <p>Status: <%= booking.status %></p>
-                    <%=link_to "Add Review", new_printer_review_path(booking.printer), class: "btn-flat"%>
+                    <% if !current_user.is_owner %>
+                      <button type="button" class="btn btn-flat mt-2" data-toggle="modal" data-target="#printer-<%=booking.printer.id%>">
+                        Add review
+                      </button>
+
+                      <div class="modal fade" id="printer-<%=booking.printer.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Add Review</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <%= render partial: "review_card", locals: {printer: booking.printer, review: @review}%>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <%end%>
+
+
                   </div>
                 </div>
               </li>

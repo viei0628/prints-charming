@@ -1,11 +1,11 @@
 <div class="form-content m-3 p-3">
-  <h2 class="ml-3 mt-2" style="font-weight: bold;"> Bookings for your <em> <%= @printer.model %> </em> </h2>
+  <h2 class="ml-3 mt-2" style="font-weight: bold;"> All your bookings </h2>
   <div class="container-fluid">
     <div class="row">
-      <div style = "box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);" class="form-content col-sm m-3 p-4">
+      <div style = "box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);" class="form-content col-sm m-3 p-2">
         <h3 style="font-weight: bold;" class="m-2 text-warning">Pending Bookings</h3>
         <hr />
-        <ul id='sort-lists' style="padding: 0;">
+        <ul id='sort-lists1' style="padding: 0;">
           <% @bookings.each do |booking| %>
             <% if booking.status == "Pending"%>
               <li style="list-style: none;">
@@ -30,10 +30,10 @@
           <%end%>
         </ul>
       </div>
-      <div style = "box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);" class="form-content col-sm m-3 p-4">
+      <div style = "box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);" class="form-content col-sm m-3 p-2">
         <h3 style="font-weight: bold;" class="m-2 text-success">Accepted Bookings</h3>
         <hr />
-        <ul id='sort-lists' style="padding: 0;">
+        <ul id='sort-lists2' style="padding: 0;">
           <% @bookings.each do |booking| %>
             <% if booking.status == "Accepted"%>
               <li style="list-style: none;">
@@ -61,7 +61,7 @@
       <div style = "box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);" class="form-content col-sm m-3 p-4">
         <h3 style="font-weight: bold;" class="m-2 text-primary">Completed Bookings</h3>
         <hr />
-        <ul id='sort-lists' style="padding: 0;">
+        <ul id='sort-lists2' style="padding: 0;">
           <% @bookings.each do |booking| %>
             <% if booking.status == "Completed"%>
               <li style="list-style: none;">
