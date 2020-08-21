@@ -18,10 +18,7 @@
           <% else %>
             <% @printer.reviews.each do |review| %>
             <div>
-              <strong><%= review.name %></strong>
-            </div>
-            <div>
-              <%= review.text %>
+              <p><strong><%= review.name %></strong>: <%= review.text %></p>
             </div>
             <% end %>
             </ul>
@@ -36,7 +33,6 @@
                 <%= f.button :submit, "Book Printer", class: "btn-flat mt-4 py-3 w-100" %>
               <% end %>
               <%=link_to "Cancel", printers_path(@printer), class: "btn btn-danger rounded mt-3 w-100 "%>
-              <%=link_to "Add Review", new_printer_review_path(@printer) %>
             </div>
           </div>
         </div>

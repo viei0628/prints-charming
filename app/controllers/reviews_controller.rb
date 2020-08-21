@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
 
     authorize @review
     if @review.save
-      redirect_to printers_path
+      redirect_to printer_path(@review.printer)
     else
       render :new
     end

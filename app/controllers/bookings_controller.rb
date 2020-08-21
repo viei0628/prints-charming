@@ -1,28 +1,28 @@
 class BookingsController < ApplicationController
-  
+
  before_action :authenticate_user!, except: [:index, :show]
 
-  def index 
+  def index
     @printer = Printer.find(params[:printer_id])
     @bookings = policy_scope(@printer.bookings)
   end
 
-  def new 
+  def new
     @printer = Printer.find(params[:printer_id])
     @booking = Booking.new
     authorize @printer
     authorize @booking
   end
 
-  def create 
+  def create
     @booking = Booking.new(booking_params)
     @booking.printer = Printer.find(params[:printer_id])
-    @booking.user = current_user 
+    @booking.user = current_user
     @booking.status = "Pending"
     authorize @booking
-    if @booking.save 
+    if @booking.save
       redirect_to my_bookings_path
-    else 
+    else
       render :new
     end
   end
@@ -46,7 +46,7 @@ class BookingsController < ApplicationController
     authorize @booking
     if @booking.save
       redirect_to my_bookings_path(@booking)
-    else 
+    else
       render :edit
     end
   end
@@ -60,15 +60,15 @@ class BookingsController < ApplicationController
   end
 
   def my_bookings
-    if current_user.is_owner 
+    if current_user.is_owner
       @bookings = Booking.joins(:printer).where(printers: {user: current_user})
-    else 
+    else
       @bookings = current_user.bookings
     end
     authorize Booking
   end
 
-  private 
+  private
   def booking_params
     params.require(:booking).permit(:meeting_time, :status)
   end
