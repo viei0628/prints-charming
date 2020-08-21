@@ -14,7 +14,7 @@
                   <div class="card-product-infos">
                     <h2>Booking for <%= booking.printer.model %> </h2>
                     <% if current_user.is_owner %>
-                      <%= simple_form_for(booking) do |f|%>
+                      <%= simple_form_for(booking, remote: true) do |f|%>
                         <%= f.input :status, collection: ["Accepted", "Rejected"], default: true, label: "Change Status" %>
                         <%= f.button :submit, "Update", class:"btn btn-flat" %>
                       <% end %>

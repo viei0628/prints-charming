@@ -31,7 +31,7 @@ import flatpickr from "flatpickr"
 import { initSortable } from '../plugins/init_sortable';
 import { showDropdownContent} from '../components/navbar';
 import { showPrinterPopup } from '../components/card'
-
+import { showNotificationContent } from '../components/navbar'
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -55,6 +55,7 @@ document.addEventListener('turbolinks:load', () => {
   showDropdownContent();
   // hideDropdownOutClick();
   showPrinterPopup();
+  showNotificationContent();
 });
 
 
