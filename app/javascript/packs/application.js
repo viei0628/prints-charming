@@ -29,6 +29,7 @@ import { loadDynamicBannerText } from '../components/banner';
 import { initMapbox } from '../plugins/init_mapbox';
 import flatpickr from "flatpickr"
 import { initSortable } from '../plugins/init_sortable';
+import Noty from 'noty';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
