@@ -7,16 +7,17 @@
   <div class="nav-collapse">
     <% if user_signed_in? %>
       <ul class="navbar-nav mr-auto">
-        <% if current_user.is_owner %>
-          <li class="nav-item">
-            <%= link_to "My Printers", my_printers_path, class:"nav-link" %>
-          </li>
-        <% end %>
         <li class="nav-item">
-          <%= link_to "My Bookings", my_bookings_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"nav-link" %>
+          <div class="dropleft">
+            <%= link_to current_user.name, "#", class:"btn btn-secondary dropdown-toggle m-2", id:"drop-button"%>
+            <div id="myDropdown" class="dropdown-menu">
+              <% if current_user.is_owner %>
+                <%= link_to "My Printers", my_printers_path, class:"dropdown-item my-2" %>
+              <% end %>
+              <%= link_to "My Bookings", my_bookings_path, class:"dropdown-item my-2" %>
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"dropdown-item my-2 " %>
+            </div>
+          </div>
         </li>
       </ul>
     <% else %>
