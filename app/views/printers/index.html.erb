@@ -27,7 +27,7 @@
                   <% elsif current_user && current_user.is_owner %>
                     <p><%= link_to "Read reviews for this printer", printer_path(printer), class: "btn btn-flat mt-3" %></p>
                   <% else %>
-                    <p><%= link_to "Book this printer", printer_path(printer), class: "btn btn-flat mt-3" %></p>
+                    <p><%= link_to "Read more about this printer", printer_path(printer), class: "btn btn-flat mt-3" %></p>
                   <% end %>
                 </div>
               </div>
