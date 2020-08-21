@@ -21,17 +21,6 @@
 }
 
 .banner .wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-}
-.banner .wrapper .one {
+  margin: auto;
   text-align: center;
-  align-items: center;
-  grid-column: 1 / 4;
-  grid-row: 2;
-}
-.banner .wrapper .two {
-  grid-column: 2 / 4;
-  grid-row: 3;
 }
