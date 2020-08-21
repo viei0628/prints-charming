@@ -5,7 +5,7 @@
         <div class="card-trip">
           <img src="<%= cl_image_path printer.photo.key, height: 300, width: 400, crop: :fill %>"/>
           <div class="card-trip-infos">
-            <div>
+            <div class="col-md-12 text-center">
               <h2><%= printer.model %></h2>
               <p><%= link_to "See bookings for this printer", printer_bookings_path(printer), class: "btn btn-flat mt-3" %></p>
             </div>
